@@ -21,21 +21,20 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 	
-	/*@GetMapping("/books")
-	public List<Book> retrieveAllBooks() {
-		return bookRepository.findAll();
-	}*/
+	//get all the books
 	 @GetMapping("/")
 	    public String viewBooks(Model model) {
 		 model.addAttribute("listBooks", bookService.getAllBooks());
 	        return "index";
 	    }
+	 //create a new entry -new book
 	  @GetMapping("/new")
 	    public String addUser( Model model) {
 		  Book book = new Book();
 	        model.addAttribute("book", book);
 	        return "new_book";
 	    }
+	  //save the book
 	  @PostMapping("/saveBook")
 	    public String saveBook(@ModelAttribute("book") Book book) {
 	        // save employee to database
@@ -43,10 +42,6 @@ public class BookController {
 	        return "redirect:/";
 	    }
 
-	/*
-	@PostMapping("/new")
-	public Book createBook( @RequestBody Book book) {
-		return bookRepository.save(book);
-		*/
+	
 	}
 
