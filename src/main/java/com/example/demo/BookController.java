@@ -1,0 +1,52 @@
+package com.example.demo;
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+
+
+@Controller
+public class BookController {
+	@Autowired
+	private BookService bookService;
+	
+	/*@GetMapping("/books")
+	public List<Book> retrieveAllBooks() {
+		return bookRepository.findAll();
+	}*/
+	 @GetMapping("/")
+	    public String viewBooks(Model model) {
+		 model.addAttribute("listBooks", bookService.getAllBooks());
+	        return "index";
+	    }
+	  @GetMapping("/new")
+	    public String addUser( Model model) {
+		  Book book = new Book();
+	        model.addAttribute("book", book);
+	        return "new_book";
+	    }
+	  @PostMapping("/saveBook")
+	    public String saveBook(@ModelAttribute("book") Book book) {
+	        // save employee to database
+	        bookService.saveBooks(book);
+	        return "redirect:/";
+	    }
+
+	/*
+	@PostMapping("/new")
+	public Book createBook( @RequestBody Book book) {
+		return bookRepository.save(book);
+		*/
+	}
+
