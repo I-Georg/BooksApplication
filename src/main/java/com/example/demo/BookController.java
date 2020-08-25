@@ -36,9 +36,10 @@ public class BookController {
 	    }
 	  //save the book
 	  @PostMapping("/saveBook")
-	    public String saveBook(@ModelAttribute("book") Book book) {
+	    public String saveBook(Model model, Book book) {
 	        // save employee to database
 	        bookService.saveBooks(book);
+	        model.addAttribute("book",bookService.getAllBooks());
 	        return "redirect:/";
 	    }
 
