@@ -1,2 +1,2 @@
 "# BooksApplication" 
-A Spring Boot Java application that allows the user to add books to a database. In the future more options to be added including delete,edit,users and user authentication.
+A Spring Boot CRUD Java application that allows the user to add,edit and delete books to a database(currently Hibernate, to be updated to other). In the future more options to be added including users and user authentication.
