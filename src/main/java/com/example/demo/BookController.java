@@ -66,6 +66,14 @@ public class BookController {
 	      model.addAttribute("users", bookService.getAllBooks());
 	      return "redirect:/";
 	  }
-	  
+	  //delete book
+	  @GetMapping("/delete/{id}")
+	  public String deleteUser(@PathVariable("id") long id, Model model) {
+	      Book book = bookService.findById(id)
+	        .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+	      bookService.deleteBook(id);
+	      model.addAttribute("users", bookService.getAllBooks());
+	      return "redirect:/";
+	  }
 	}
 

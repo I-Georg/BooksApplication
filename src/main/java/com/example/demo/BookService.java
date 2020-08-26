@@ -7,6 +7,6 @@ public interface BookService {
 List<Book> getAllBooks();
 void saveBooks(Book book);
 //void saveNew(KeyEntity pkbook);
-//void deleteBook(String pk);
+void deleteBook(long id);
 Optional<Book> findById(long id);
 }

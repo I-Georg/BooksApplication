@@ -35,5 +35,11 @@ private BookRepository bookRepository;
 		return bookRepository.findById(id);
 	}
 
+	@Override
+	public void deleteBook(long id) {
+		// TODO Auto-generated method stub
+		this.bookRepository.deleteById(id);
+	}
+
 	
 }
