@@ -22,6 +22,7 @@
                 <tr>
                     <th>Book Name</th>
                     <th>Book Author</th>
+                    <th>Actions</th>
                    
                     
                 </tr>
@@ -30,8 +31,10 @@
                 <tr th:each="book : ${listBooks}">
                     <td th:text="${book.name}"></td>
                     <td th:text="${book.author}"></td>
-                    <a th:href="@{/edit/{id}(id=${book.id})}"th:object="${book}" class="btn btn-primary btn-sm mb-3"> Edit Books </a>
-                    <
+                    <td>
+                    <a th:href="@{/edit/{id}(id=${book.id})}"th:object="${book}" class="btn btn-primary btn-sm mb-3"> Edit Book </a>
+                    <a th:href="@{/delete/{id}(id=${book.id})}"th:object="${book}" class="btn btn-primary btn-sm mb-3"> Delete Book </a>
+                    </td>
                     </td>
                 </tr>
             </tbody>
