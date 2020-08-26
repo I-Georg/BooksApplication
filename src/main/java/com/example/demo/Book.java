@@ -1,14 +1,28 @@
 package com.example.demo;
+import javax.persistence.Column;
+import javax.persistence.Id;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
-import org.springframework.data.annotation.Id;
+
 
 
 @Entity
-public class Book extends KeyEntity{
+public class Book{
+	@Id 
+	   @GeneratedValue
+		@Column(name="id",unique = true,nullable = false)
+	    private Long id;
 	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
 	private String name;
 	private String author;
 	public String getName() {
@@ -23,11 +37,7 @@ public class Book extends KeyEntity{
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	/*
-	public Book(String name, String author) {
-		super();
-		this.name = name;
-		this.author = author;
-	}*/
+	
+	
 	}
 
