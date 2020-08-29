@@ -4,6 +4,8 @@ package com.example.demo;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +23,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class BookController {
 	@Autowired
 	private BookService bookService;
+	
 	
 	//get all the books
 	 @GetMapping("/")
@@ -75,5 +78,11 @@ public class BookController {
 	      model.addAttribute("users", bookService.getAllBooks());
 	      return "redirect:/";
 	  }
+	 
+	      @GetMapping("/home")
+	      public String home(@AuthenticationPrincipal OidcUser user) {
+	          return "Welcome, "+ user.getFullName() + "!";
+	      }
+	  
 	}
 
