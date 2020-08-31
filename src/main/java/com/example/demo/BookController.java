@@ -1,9 +1,11 @@
 package com.example.demo;
 
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
@@ -14,16 +16,30 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
-
+@EnableWebMvc
 @Controller
 public class BookController {
 	@Autowired
 	private BookService bookService;
 	
+	/*AdminService adminService = new AdminService();
+
+	@Autowired
+	BookController(AdminService adminService) {
+	    this.adminService = adminService;
+	}*/
+	  
+	    
+	  
+	//https://developer.okta.com/blog/2018/10/05/build-a-spring-boot-app-with-user-authentication
+	
+    
 	
 	//get all the books
 	 @GetMapping("/")
@@ -78,11 +94,10 @@ public class BookController {
 	      model.addAttribute("users", bookService.getAllBooks());
 	      return "redirect:/";
 	  }
-	 
-	      @GetMapping("/home")
-	      public String home(@AuthenticationPrincipal OidcUser user) {
-	          return "Welcome, "+ user.getFullName() + "!";
-	      }
-	  
+	 /* @RequestMapping("/admin")  
+	    @PreAuthorize("hasAuthority('Admin')")  
+	    String admin() {  
+	        return "admin";  
+	    }  */
 	}
 

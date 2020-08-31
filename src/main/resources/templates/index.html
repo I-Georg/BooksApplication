@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"> 
 <head>
     <meta charset="ISO-8859-1">
     <title>Book</title>
-
+   <a th:href="@{/new}" class="btn btn-primary btn-sm mb-3"> Add a new Book </a>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 </head>
@@ -12,11 +12,37 @@
 <body>
 
     <div class="container my-2">
+    <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+   <title>Spring Security - OAuth 2.0 Login</title>
+   <meta charset="utf-8" />
+</head>
+<body>
+<div style="float: right" th:fragment="logout" sec:authorize="isAuthenticated()">
+   <div style="float:left">
+       <span style="font-weight:bold">User: </span><span sec:authentication="name"></span>
+   </div>
+   <div style="float:none">&nbsp;</div>
+   <div style="float:right">
+       <form action="#" th:action="@{/logout}" method="post">
+           <input type="submit" value="Logout" />
+       </form>
+   </div>
+</div>
+<h1>OAuth 2.0 Login with Spring Security</h1>
+<div>
+   You are successfully logged in <span style="font-weight:bold" th:text="${userName}"></span>
+   via the OAuth 2.0 Client <span style="font-weight:bold" th:text="${clientName}"></span>
+</div>
+<div>&nbsp;</div>
+<div>
+   <a href="/userinfo" th:href="@{/userinfo}">Display User Info</a>
+</div>
         <h1><i>Book List</i></h1>
 
-        <a th:href="@{/new}" class="btn btn-primary btn-sm mb-3"> Add a new Book </a>
-        
-
+       
         <table border="1" class="table table-striped table-responsive-md">
             <thead>
                 <tr>
@@ -39,6 +65,7 @@
                 </tr>
             </tbody>
         </table>
+       
     </div>
 </body>
 
