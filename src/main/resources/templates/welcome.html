@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <title>Create an account</title>
-<body>
+    <title>Welcome</title>
+    
+        <!-- Google fonts-->
+       <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        
+    </head>
+ <body>
 <div class="container">
-
-    <a th:href="@{/login}" class="btn btn-primary btn-sm mb-3"> Login or Create an account</a>
-     <a th:href="@{/book}" class="btn btn-primary btn-sm mb-3"> View the books</a>
+<h1>Welcome to Book choice </h1>
+   
+            <div class="container">
+            
+                    <button onclick="window.location.href='/login'" class="btn btn-danger">Login</a></button>
+                 <p>If you are logged in, you can view and add Books to the list</p><br>
+                        <button onclick="window.location.href='/book'" class="btn btn-warning">View Books</a></button>
+                     
+        </nav>
+       <body>
 </html>
