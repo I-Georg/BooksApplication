@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,18 +13,46 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 //import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 //import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.config.core.GrantedAuthorityDefaults;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 //@EnableOAuth2Sso  
 @Configuration 
-@EnableGlobalMethodSecurity(prePostEnabled = true) 
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true, proxyTargetClass = true) 
 
 
 public class SpringSecurityWebAppConfig extends WebSecurityConfigurerAdapter {
-	
-	/*@Bean  
-    GrantedAuthorityDefaults grantedAuthorityDefaults() { 
-        return new GrantedAuthorityDefaults(""); // Remove the ROLE_ prefix  
-    }  */
+	/* @Autowired
+	    private UserDetailsService userDetailsService;
+
+	    @Bean
+	    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+	        return new BCryptPasswordEncoder();
+	    }*/
+	    @Override
+	    protected void configure(HttpSecurity http) throws Exception {
+	        http
+	            .authorizeRequests()
+	            .antMatchers("/").permitAll()
+	            .anyRequest().authenticated()
+	            .and()
+	            .formLogin()
+	            .loginPage("/")
+	            .defaultSuccessUrl("/book")
+	            .failureUrl("/login?error")
+	            .permitAll()
+	            .and()
+	            .logout().logoutSuccessUrl("/")
+	           
+	            .permitAll();
+	    }
+/*
+	    @Autowired
+	    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+	        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
+	    }
+	/*
 	 @Override
 	    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
@@ -48,39 +77,7 @@ public class SpringSecurityWebAppConfig extends WebSecurityConfigurerAdapter {
 	                .csrf().disable()
 	                .formLogin().disable();
 	    }
-
-	/* @Override  
-	  protected void configure(HttpSecurity http) throws Exception { 
-		    http.antMatcher("/protected")  
-            .authorizeRequests()  
-            .antMatchers("/protected", "/login").permitAll()  
-            .anyRequest().authenticated()  
-            .and()  
-            .oauth2Login();  */
-	       /* http.authorizeRequests()  
-	                .antMatchers("/book").permitAll()  
-	                .anyRequest().authenticated()  
-	                .and()  
-	                .formLogin()  
-	                .loginPage("/login.html")  
-	                .failureUrl("/login-error.html")  
-	                .permitAll();  
-	               // .anyRequest().authenticated();  */
-	    //}   
-	    
-
-	/*@Override  
-    public void configure(HttpSecurity http) throws Exception {  
-        http  
-            .authorizeRequests()  
-            .anyRequest().authenticated()  
-            .and()  
-            .httpBasic();  
-    }  okta.oauth2.issuer=https://dev-886425.okta.com/oauth2/default
-okta.oauth2.client-id=0oaso02frzo5NHUo14x6
-okta.oauth2.client-secret=gxD0ExG6WzlIAn3sFReuoQpXABxqZzWUEo7jTQMq
-user.oauth.user.username=Andrew
-user.oauth.user.password=abcd
-      */
+*/
+	
  
 }

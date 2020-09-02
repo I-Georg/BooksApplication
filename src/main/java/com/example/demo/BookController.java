@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -28,24 +29,19 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 	
-	/*AdminService adminService = new AdminService();
-
-	@Autowired
-	BookController(AdminService adminService) {
-	    this.adminService = adminService;
-	}*/
-	  
-	    
-	  
-	//https://developer.okta.com/blog/2018/10/05/build-a-spring-boot-app-with-user-authentication
-	
-    
 	
 	//get all the books
-	 @GetMapping("/")
+	
+	 
+	 @GetMapping("/book")
 	    public String viewBooks(Model model) {
 		 model.addAttribute("listBooks", bookService.getAllBooks());
 	        return "index";
+	    }
+	 @GetMapping("/")
+	    public String viewBooks() {
+		 
+	        return "welcome";
 	    }
 	 //create a new entry -new book
 	  @GetMapping("/new")
@@ -60,7 +56,7 @@ public class BookController {
 	        // save employee to database
 	        bookService.saveBooks(book);
 	        model.addAttribute("book",bookService.getAllBooks());
-	        return "redirect:/";
+	        return "redirect:/book";
 	    }
 	  
 //get edit
@@ -83,7 +79,7 @@ public class BookController {
 	          
 	     bookService.saveBooks(book);
 	      model.addAttribute("users", bookService.getAllBooks());
-	      return "redirect:/";
+	      return "redirect:/book";
 	  }
 	  //delete book
 	  @GetMapping("/delete/{id}")
@@ -92,12 +88,9 @@ public class BookController {
 	        .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
 	      bookService.deleteBook(id);
 	      model.addAttribute("users", bookService.getAllBooks());
-	      return "redirect:/";
+	      return "redirect:/book";
 	  }
-	 /* @RequestMapping("/admin")  
-	    @PreAuthorize("hasAuthority('Admin')")  
-	    String admin() {  
-	        return "admin";  
-	    }  */
+	  
+	
 	}
 

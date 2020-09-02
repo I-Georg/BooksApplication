@@ -8,13 +8,16 @@ g<!DOCTYPE html>
 <div id="container">  
     <h2>Login page</h2>  
     <form th:action="@{/login.html}" method="post">  
-        <label for="username">Username</label>  
-        <input type="text" id="username" name="username" autofocus="autofocus" />  
-        <label for="password">Password</label>  
-        <input type="password" id="password" name="password" />  
-        <input id="submit" type="submit" value="Log in" />  
-    </form>  
-    <p th:if="${loginError}" class="error">Wrong user or password</p>  
+      <div class="form-group ${error != null ? 'has-error' : ''}">
+         <span>${message}</span>
+            <input name="username" type="text" class="form-control" placeholder="Username"
+                   autofocus="true"/>
+            <input name="password" type="password" class="form-control" placeholder="Password"/>
+            <span>${error}</span>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+        </div>
 </div>  
 </body>  
 </html>
