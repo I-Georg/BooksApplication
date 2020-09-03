@@ -41,6 +41,7 @@ public class SpringSecurityWebAppConfig extends WebSecurityConfigurerAdapter {
 	            .loginPage("/")
 	            .defaultSuccessUrl("/book")
 	            .failureUrl("/login?error")
+	            
 	            .permitAll()
 	            .and()
 	            .logout().logoutSuccessUrl("/")

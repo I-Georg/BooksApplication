@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.example.demo.entity.Book;
+import com.example.demo.repository.BookRepository;
+
 @RunWith(SpringRunner.class)
 @DataJpaTest
 class BookProject1ApplicationTests {

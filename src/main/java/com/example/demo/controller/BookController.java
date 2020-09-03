@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.controller;
 
 
 import java.security.Principal;
@@ -21,6 +21,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import com.example.demo.entity.Book;
+import com.example.demo.service.BookService;
 
 
 @EnableWebMvc
