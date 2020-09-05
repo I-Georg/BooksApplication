@@ -19,14 +19,19 @@
    <meta charset="utf-8" />
 </head>
 <body>
+
+             
+          
 <div style="float: right" th:fragment="logout" sec:authorize="isAuthenticated()">
    <div style="float:left">
-       <span style="font-weight:bold">User: </span><span sec:authentication="name"></span>
+    <tr th:each="user : ${email}">
+                    
+       <span style="font-weight:bold">User:<td th:text="${email}"></td> </span><span sec:authentication="name"></span>
    </div>
    <div style="float:none">&nbsp;</div>
    <div style="float:right">
        <form action="#" th:action="@{/logout}" method="post">
-           <input type="submit" value="Logout" />
+           <input type="submit" class="btn btn-primary btn-sm mb-3" value="Logout" />
        </form>
    </div>
 </div>

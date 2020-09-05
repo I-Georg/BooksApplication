@@ -37,15 +37,18 @@ public class BookController {
 	
 	 
 	 @GetMapping("/book")
-	    public String viewBooks(Model model) {
+	    public String viewBooks(@AuthenticationPrincipal OidcUser user,Model model) {
 		 model.addAttribute("listBooks", bookService.getAllBooks());
+		 model.addAttribute("email",	 user.getAttributes().get("email"));
 	        return "index";
 	    }
 	 @GetMapping("/")
 	    public String viewBooks() {
-		 
+		
+		   
 	        return "welcome";
 	    }
+	
 	 //create a new entry -new book
 	  @GetMapping("/new")
 	    public String addUser( Model model) {
