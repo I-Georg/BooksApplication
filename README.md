@@ -21,7 +21,7 @@ Project is created with:
 ## Sources
 This app is inspired by tutorials from:(https://www.baeldung.com/spring-security-okta),(https://www.baeldung.com/spring-boot-crud-thymeleaf),(https://www.javatpoint.com/spring-boot-crud-operations),
 (https://howtodoinjava.com/spring-boot2/spring-boot-crud-hibernate/),(https://www.springboottutorial.com/spring-boot-crud-rest-service-with-jpa-hibernate),(https://github.com/okta/okta-spring-boot)
-##Things to be added:
+## Things to be added:
 *A error page - you are not a registered user to replace the current if/else link in welcome template;
 *Adding admin dashboard;
 *switching to MySQL;
