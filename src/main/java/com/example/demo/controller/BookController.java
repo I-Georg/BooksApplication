@@ -109,7 +109,7 @@ public class BookController {
 	    public String viewProfile(@AuthenticationPrincipal OidcUser user,Model model) {
 		  model.addAttribute("name",user.getAttributes().get("name"));
 		 model.addAttribute("email",user.getAttributes().get("email"));
-	        return "index";
+	        return "profile";
 	    }
 	
 	}
