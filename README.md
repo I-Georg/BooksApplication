@@ -3,9 +3,9 @@ A Spring Boot  Java application that allows a registered user to add,edit and de
 ## Table of Contents
 * [General info](#general-info)
 * [Technologies](#technologies) 
- *[Sources](#sources)
-* [Things to be added](#thingstobeadded)
-* [Example](#example) 
+*[Sources](#sources)
+*[Things to be added](#thingstobeadded)
+*[Example](#example) 
 
 ## General info
 This project is a simple CRUD application to help me understand better Spring Boot and Spring Security.Users are registered with Okta registration.
@@ -18,7 +18,6 @@ Project is created with:
 *Okta
 *Thymeleaf
 *Jpa
-
 ##Sources
 This app is inspired by tutorials from:(https://www.baeldung.com/spring-security-okta),(https://www.baeldung.com/spring-boot-crud-thymeleaf),(https://www.javatpoint.com/spring-boot-crud-operations),
 (https://howtodoinjava.com/spring-boot2/spring-boot-crud-hibernate/),(https://www.springboottutorial.com/spring-boot-crud-rest-service-with-jpa-hibernate),(https://github.com/okta/okta-spring-boot)
