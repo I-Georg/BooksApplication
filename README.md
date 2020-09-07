@@ -18,7 +18,7 @@ Project is created with:
 *Okta
 *Thymeleaf
 *Jpa.
-##Sources
+## Sources
 This app is inspired by tutorials from:(https://www.baeldung.com/spring-security-okta),(https://www.baeldung.com/spring-boot-crud-thymeleaf),(https://www.javatpoint.com/spring-boot-crud-operations),
 (https://howtodoinjava.com/spring-boot2/spring-boot-crud-hibernate/),(https://www.springboottutorial.com/spring-boot-crud-rest-service-with-jpa-hibernate),(https://github.com/okta/okta-spring-boot)
 ##Things to be added:
@@ -26,7 +26,7 @@ This app is inspired by tutorials from:(https://www.baeldung.com/spring-security
 *Adding admin dashboard;
 *switching to MySQL;
 *More tests.
-##Example
+## Example
 ![Book1](./src/main/resources/images/book1.jpeg)
 ![Book2](./src/main/resources/images/book2.jpeg)
 ![Book3](./src/main/resources/images/book3.jpeg)
