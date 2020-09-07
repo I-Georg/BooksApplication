@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.demo.entity.Book;
@@ -42,20 +43,27 @@ public class BookController {
 		 model.addAttribute("email",	 user.getAttributes().get("email"));
 	        return "index";
 	    }
+	 //welcome page
 	 @GetMapping("/")
-	    public String viewBooks() {
+	    public String welcome(@AuthenticationPrincipal OidcUser user) {
 		
-		   
 	        return "welcome";
 	    }
 	
 	 //create a new entry -new book
 	  @GetMapping("/new")
-	    public String addUser( Model model) {
+	    public String addUser( Model model) throws Exception {
+		  try {
 		  Book book = new Book();
 	        model.addAttribute("book", book);
+	        if(book == null) {
+	        	throw new Exception("Book not found");
+	        }
+		  
 	        return "new_book";
-	    }
+		  }catch (Exception e) {
+				throw new Exception("Internal Server Exception while getting exception");
+	    }}
 	  //save the book
 	  @PostMapping("/saveBook")
 	    public String saveBook(Model model, Book book) {
@@ -96,7 +104,13 @@ public class BookController {
 	      model.addAttribute("users", bookService.getAllBooks());
 	      return "redirect:/book";
 	  }
-	  
+	  //profile
+	  @GetMapping("/profile")
+	    public String viewProfile(@AuthenticationPrincipal OidcUser user,Model model) {
+		  model.addAttribute("name",user.getAttributes().get("name"));
+		 model.addAttribute("email",user.getAttributes().get("email"));
+	        return "index";
+	    }
 	
 	}
 
